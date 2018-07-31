@@ -1,0 +1,112 @@
+---
+layout:     post
+title:      "欢迎来到虾饺的博客"
+subtitle:   " \"Hello World, Hello Blog\""
+date:       2018-07-30 12:00:00
+author:     "虾饺"
+header-img: "img/post-bg-2015.jpg"
+tags:
+    - 生活
+---
+
+> “多看看外面的世界”
+
+
+## 前言
+
+这个blog是用的黄玄大神提供的jekyll模板搭的，需要安装jekyll，过程不复杂，后续有自己定制的部分也会放在这里说明，这篇文章是记录搭建过程的。
+
+<p id = "build"></p>
+---
+
+## 正文
+
+作为一个初学前端仔，[GitHub Pages](https://pages.github.com/) + [Jekyll](http://jekyllrb.com/)可以说是轻松无痛了，基本就是git配置-安装ruby-安装jekyll这么个流程，支持简介优雅的markdown语法。
+
+本文配置环境是windows10
+
+1.Github Pages配置
+
+[GitHub Pages](https://pages.github.com/) 可以为你或者你的项目提供介绍网页，它是由 GitHub 官方托管和发布的。你可以使用 GitHub 提供的页面自动生成器。也可以做个人博客，是个轻量级的博客系统，没有麻烦的配置。使用标记语言如Markdown，不需自己搭建服务器，还可以绑定自己的域名。
+
+本博客是用的github的二级域名，需要[自定义域名](#)
+
+在Github上新建一个repository,名为username.github.io
+
+然后通过git bash或者客户端将新建的远程仓库clone到本地文件夹，
+可以先添加一个index.html，写入基本html
+
+```html
+<!DOCTYPE html>
+	<html>
+	<head>
+	　<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	　<title>一步步在GitHub上创建博客主页(2)</title>
+	</head>
+	<body>
+	　<div>Hello, my blog</div>
+	</body>
+	</html>
+```    
+将改动commit到github刚刚创建的仓库上，浏览器输入username.github.io就可以访问到了。
+
+2.Jekyll本地环境配置
+
+jekyll本身是基于Ruby开发的，因此如果需要构建本地测试环境需要具有Ruby的开发环境，windows直接使用[Rubyinstaller](https://rubyinstaller.org/downloads/)一键安装ruby和rubydevkit即可。
+
+安装一路默认就可以了。
+
+Rubygems之于ruby是类似于ubuntu的apt-get，javascript的npm，python中的pip，就是个包管理工具，因为我们需要的jekyll就是依赖这个包安装的，因此先安装rubygems。
+
+[gems下载地址](https://rubygems.org/pages/download?locale=zh-CN)
+
+接下来终于可以安装jekyll了。直接执行gem命令就可以了
+```
+$gem install jekyll
+```
+
+安装好之后就可以测试jekyll服务了，进入本地博客文件夹，输入以下命令
+```
+$jekyll serve
+```
+有可能会报错，默认是4000口监听，这个口如果被占了需要手动杀死进程，吐槽一下windows里面杀死进程真是麻烦。。。
+
+成功了之后就可以通过本地浏览器访问[http://127.0.0.1:4000/index.html](http://127.0.0.1:4000/index.html)测试博客了。
+
+
+3.jekyll
+
+jekyll是一个基于ruby开发的，专用于构建静态网站的程序。它能够将一些动态的组件：模板、liquid代码等构建成静态的页面集合，Github-Page全面引入jekyll作为其构建引擎，这也是学习jekyll的主要动力。同时，除了jekyll引擎本身，它还提供一整套功能，比如web server。我们用jekyll –server启动本地调试就是此项功能。读者可能已经发现，在启动server后，之前我们的项目目录下会多出一个_site目录。jekyll默认将转化的静态页面保存在_site目录下，并以某种方式组织。使用jekyll构建博客是十分适合的，因为其内建的对象就是专门为blog而生的，在后面的逐步介绍中读者会体会到这一点。但是需要强调的是，jekyll并不是博客软件，跟workpress之类的完全两码事，它仅仅是个一次性的模板解析引擎，它不能像动态服务端脚本那样处理请求。
+
+在jekyll解析网站之前，需要保证网站目录如下
+
+```
+|—— _config.yml
+|—— _includes
+|—— _layouts
+|   |—— default.html
+|   |—— post.html
+|—— _posts
+|   |—— 20011-10-25-open-source-is-good.html
+|   |—— 20011-04-26-hello-world.html
+|—— _site
+|—— index.html
+|—— assets
+   |—— css
+       |—— style.css
+   |—— javascripts
+```
+
+_config.yml：配置文件，将直接影响jekyll构造网站的各种行为。
+_layouts：将作为主要的模板文件。
+_posts:文章放在这个文件夹中，但是必须要以YYYY-mm-dd-title命名。
+_site：jekyll默认转换结果存放的文件。
+assets包括样式和脚本文件，这部分没有严格要求。
+
+4.样式
+
+本博客使用的主题是[Hux blog](https://github.com/Huxpro/huxpro.github.io)。
+
+
+
+
